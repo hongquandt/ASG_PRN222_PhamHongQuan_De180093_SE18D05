@@ -1,0 +1,115 @@
+@model TravelManagementApp.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Smart Travel System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h2 {
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .login-header p {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .travel-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="travel-icon">✈️</div>
+            <h2>Smart Travel System</h2>
+            <p>Login to manage your trips and bookings</p>
+        </div>
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Code" class="form-label fw-bold">Customer Code</label>
+                <input asp-for="Code" class="form-control" placeholder="Enter your code" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Password" class="form-label fw-bold">Password</label>
+                <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-login">
+                Login
+            </button>
+        </form>
+
+        <div class="text-center mt-4">
+            <small class="text-muted">
+                Demo: Admin (CUS-001/123456) | User (CUS-002/password1)
+            </small>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
